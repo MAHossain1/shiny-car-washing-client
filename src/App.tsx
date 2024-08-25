@@ -1,7 +1,9 @@
+import MainLayout from './components/layout/MainLayout/MainLayout';
+
 function App() {
   return (
     <>
-      <h1>Shiny Car Washing Service</h1>
+      <MainLayout />
     </>
   );
 }
