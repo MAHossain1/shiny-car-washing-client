@@ -18,12 +18,12 @@ const Navbar = () => {
   const handleLogout = () => {};
 
   return (
-    <header className="bg-gray-800 text-white relative">
-      <nav className="h-[100px] md:h-[96px] px-4 flex items-center p-2 md:p-4 xl:p-8">
+    <header className="bg-orange-800 text-white relative">
+      <nav className="h-[80px] md:h-[60px] px-4 flex items-center p-2 md:p-4 xl:p-8">
         <MaximumWidthWrapper>
           <div className="w-full flex items-center justify-between relative">
             <h1 className="cursor-pointer text-2xl font-[700]">
-              <Link to="/">CarWash</Link>
+              <Link to="/">SHINY Car Wash</Link>
             </h1>
             <div>
               <ul className="hidden md:flex items-center gap-5 font-semibold">

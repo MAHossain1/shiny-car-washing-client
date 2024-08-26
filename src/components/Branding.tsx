@@ -6,16 +6,16 @@ const Branding = () => {
   return (
     <div className="relative">
       <CarouselPlugin />
-      <div className="absolute top-64 left-36 flex flex-col gap-7">
-        <p className="text-4xl font-bold text-white uppercase">
+      <div className="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 md:gap-7 text-center md:text-left">
+        <p className="text-2xl md:text-4xl font-bold text-red-500 uppercase">
           Exclusive Offer
         </p>
-        <h1 className="text-6xl font-bold text-white uppercase">
+        <h1 className="text-3xl md:text-6xl font-bold text-lime-500 uppercase">
           We protect your <br /> investment
         </h1>
         <Button
           asChild
-          className="bg-gray-500 hover:bg-gray-700 px-20 py-7 text-2xl uppercase"
+          className="bg-gray-500 hover:bg-gray-700 px-10 py-5 md:px-20 md:py-7 text-lg md:text-2xl uppercase"
         >
           <Link to={'/services'}>Choose your service</Link>
         </Button>
