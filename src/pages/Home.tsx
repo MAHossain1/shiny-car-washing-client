@@ -1,13 +1,11 @@
-import { useGetAllServicesQuery } from '../redux/features/services/serviceApi';
+import Branding from '../components/Branding';
+import Featured from '../components/Featured';
 
 const Home = () => {
-  const { data, isLoading, isFetching } = useGetAllServicesQuery(undefined);
-
-  console.log(data);
-
   return (
     <div>
-      <h1>This is Home page</h1>
+      <Branding />
+      <Featured />
     </div>
   );
 };
