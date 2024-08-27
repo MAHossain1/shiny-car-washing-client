@@ -45,7 +45,7 @@ const Login = () => {
       toast.error('Something went wrong!', {
         id: toastId,
       });
-      console.log({ error });
+      // console.log({ error });
       setMessage(error.data.message);
     }
   };
