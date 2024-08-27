@@ -51,35 +51,6 @@ const ReviewSection = () => {
 
         <div className="my-10 ">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-            <div className="col-span-2 flex flex-col md:flex-row gap-5 flex-wrap">
-              {reviews.slice(-2).map((review, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex-1"
-                >
-                  <div className="bg-white p-2 h-[180px] border rounded-md">
-                    <div className="flex gap-5 p-0">
-                      <div className="flex flex-col justify-between">
-                        {review.feedback}
-                        <div>
-                          <p className="font-semibold">Arman Hossain</p>
-                          <p className="text-gray-300">Instructor</p>
-                        </div>
-                      </div>
-                      <img
-                        src="/carwash.jpg"
-                        alt=""
-                        className="w-32 h-36 object-cover rounded-2xl"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
             <div className="col-span-1 border rounded-md">
               <div className="bg-white p-2">
                 {!isLoggedIn && (
@@ -132,6 +103,34 @@ const ReviewSection = () => {
                   </div>
                 </motion.div>
               </div>
+            </div>
+            <div className="col-span-2 flex flex-col md:flex-row gap-5 flex-wrap">
+              {reviews.slice(-2).map((review, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex-1"
+                >
+                  <div className="bg-white p-2 h-[180px] border rounded-md">
+                    <div className="flex gap-5 p-0">
+                      <div className="flex flex-col justify-between">
+                        {review.feedback}
+                        <div>
+                          <p className="font-semibold">Arman Hossain</p>
+                          <p className="text-gray-300">Instructor</p>
+                        </div>
+                      </div>
+                      <img
+                        src="/CarWash.jpg"
+                        alt=""
+                        className="w-32 h-36 object-cover rounded-2xl"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

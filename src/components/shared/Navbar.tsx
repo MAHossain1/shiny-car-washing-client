@@ -4,18 +4,24 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MaximumWidthWrapper from './MaximumWidthWrapper';
 import { Button } from '../ui/button';
+import { useDispatch } from 'react-redux';
+import { logout, selectUser } from '../../redux/features/auth/authSlice';
+import { useAppSelector } from '../../redux/hooks';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  let user = {
-    role: 'admin',
-  };
+  const user = useAppSelector(selectUser);
+
   const onToggle = () => {
     setOpen(prev => !prev);
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    console.log('clicked');
+    dispatch(logout());
+  };
 
   return (
     <header className="bg-orange-800 text-white relative">
@@ -33,10 +39,10 @@ const Navbar = () => {
                 <li className="text-gray-200 hover:text-white">
                   <Link to="/bookings">Booking</Link>
                 </li>
-                {user.role ? (
+                {user?.role ? (
                   <>
                     <li className="text-gray-200 hover:text-white">
-                      <Link to={`/${user.role}/dashboard`}>Dashboard</Link>
+                      <Link to={`/${user?.role}/dashboard`}>Dashboard</Link>
                     </li>
                     <li>
                       <Button asChild onClick={handleLogout}>
