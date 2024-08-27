@@ -1,62 +1,53 @@
-import React from 'react';
-import * as Form from '@radix-ui/react-form';
-import MaximumWidthWrapper from '../components/shared/MaximumWidthWrapper';
+import { Link } from 'react-router-dom';
 
-const Login = () => (
-  <MaximumWidthWrapper>
-    <Form.Root className="w-[260px]">
-      <Form.Field className="grid mb-[10px]" name="email">
-        <div className="flex items-baseline justify-between">
-          <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-            Email
-          </Form.Label>
-          <Form.Message
-            className="text-[13px] text-white opacity-[0.8]"
-            match="valueMissing"
+const Login = () => {
+  return (
+    <div className="h-screen w-screen bg-black bg-opacity-75 flex justify-center">
+      <div className="max-auto max-w-md pt-12 grid place-content-center">
+        <h1 className="text-3xl text-center font-semibold text-white mb-10 uppercase">
+          Login
+        </h1>
+        <form className="bg-white p-6 rounded shadow-md">
+          <div className="mb-4">
+            <label className="block text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              // value={formData.name}
+              // onChange={handleChange}
+              className="w-full min-w-[350px] p-2 border border-gray-300 rounded mt-1"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700">Password</label>
+            <input
+              type="password"
+              name="password"
+              // value={formData.name}
+              // onChange={handleChange}
+              className="w-full min-w-[350px] p-2 border border-gray-300 rounded mt-1"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full mt-5 bg-blue-500 text-white p-2 rounded uppercase"
           >
-            Please enter your email
-          </Form.Message>
-          <Form.Message
-            className="text-[13px] text-white opacity-[0.8]"
-            match="typeMismatch"
-          >
-            Please provide a valid email
-          </Form.Message>
-        </div>
-        <Form.Control asChild>
-          <input
-            className="box-border w-full bg-blackA2 shadow-blackA6 inline-flex h-[35px] appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white selection:bg-blackA6"
-            type="email"
-            required
-          />
-        </Form.Control>
-      </Form.Field>
-      <Form.Field className="grid mb-[10px]" name="question">
-        <div className="flex items-baseline justify-between">
-          <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-            Question
-          </Form.Label>
-          <Form.Message
-            className="text-[13px] text-white opacity-[0.8]"
-            match="valueMissing"
-          >
-            Please enter a question
-          </Form.Message>
-        </div>
-        <Form.Control asChild>
-          <textarea
-            className="box-border w-full bg-blackA2 shadow-blackA6 inline-flex appearance-none items-center justify-center rounded-[4px] p-[10px] text-[15px] leading-none text-white shadow-[0_0_0_1px] outline-none hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black] selection:color-white selection:bg-blackA6 resize-none"
-            required
-          />
-        </Form.Control>
-      </Form.Field>
-      <Form.Submit asChild>
-        <button className="box-border w-full text-violet11 shadow-blackA4 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-white px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none mt-[10px]">
-          Post question
-        </button>
-      </Form.Submit>
-    </Form.Root>
-  </MaximumWidthWrapper>
-);
+            Login
+          </button>
+        </form>
+
+        <p className="py-4 text-center text-white">
+          No account?{' '}
+          <Link to="/signup" className="text-white font-semibold">
+            Signup
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default Login;
