@@ -1,20 +1,72 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../redux/features/auth/authApi';
+import { useDispatch } from 'react-redux';
+import { verifyToken } from '../utils/verifyToken';
+import { setUser } from '../redux/features/auth/authSlice';
+import { toast } from 'sonner';
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [message, setMessage] = useState('');
+  const [login] = useLoginMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const toastId = toast.loading('Logging...');
+    try {
+      const result = await login(formData).unwrap();
+
+      const user = verifyToken(result.data.token);
+      dispatch(setUser({ user, token: result.data.token }));
+      toast.success('Logged in', {
+        id: toastId,
+        duration: 2000,
+      });
+      navigate('/');
+
+      console.log(user);
+    } catch (error: any) {
+      toast.error('Something went wrong!', {
+        id: toastId,
+      });
+      console.log({ error });
+      setMessage(error.data.message);
+    }
+  };
+
   return (
-    <div className="h-screen w-screen bg-black bg-opacity-75 flex justify-center">
+    <div className="h-screen w-screen bg-black bg-opacity-75 ">
       <div className="max-auto max-w-md pt-12 grid place-content-center">
         <h1 className="text-3xl text-center font-semibold text-white mb-10 uppercase">
           Login
         </h1>
-        <form className="bg-white p-6 rounded shadow-md">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-6 rounded shadow-md"
+        >
           <div className="mb-4">
             <label className="block text-gray-700">Email</label>
             <input
               type="email"
               name="email"
-              // value={formData.name}
-              // onChange={handleChange}
+              value={formData.email}
+              onChange={handleChange}
               className="w-full min-w-[350px] p-2 border border-gray-300 rounded mt-1"
               required
             />
@@ -24,8 +76,8 @@ const Login = () => {
             <input
               type="password"
               name="password"
-              // value={formData.name}
-              // onChange={handleChange}
+              value={formData.password}
+              onChange={handleChange}
               className="w-full min-w-[350px] p-2 border border-gray-300 rounded mt-1"
               required
             />
@@ -38,7 +90,7 @@ const Login = () => {
             Login
           </button>
         </form>
-
+        {message && <p className="mt-4 text-red-500">{message}</p>}
         <p className="py-4 text-center text-white">
           No account?{' '}
           <Link to="/signup" className="text-white font-semibold">
