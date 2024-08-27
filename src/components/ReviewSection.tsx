@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import MaximumWidthWrapper from './shared/MaximumWidthWrapper';
+import ScrollToTop from './ui/ScrollToTop';
 
 const ReviewSection = () => {
   const [feedback, setFeedback] = useState('');

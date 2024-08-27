@@ -1,10 +1,12 @@
 import { Facebook, Instagram, Linkedin, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MaximumWidthWrapper from './shared/MaximumWidthWrapper';
+import ScrollToTop from './ui/ScrollToTop';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-8">
+      <ScrollToTop />
       <MaximumWidthWrapper className="">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/3">
