@@ -1,5 +1,6 @@
 import Branding from '../components/Branding';
 import Featured from '../components/Featured';
+import Footer from '../components/Footer';
 import ReviewSection from '../components/ReviewSection';
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
       <Branding />
       <Featured />
       <ReviewSection />
+      <Footer />
     </div>
   );
 };
