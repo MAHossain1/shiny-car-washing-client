@@ -9,20 +9,23 @@ import {
   CardTitle,
 } from './Card';
 import { Button } from './button';
+import { TService } from '../types/component.types';
 
-export type TService = {
-  _id: string;
-  name: string;
-  description: string;
-  imgUrl: string;
-};
-
-const ServiceCard = ({ _id, name, description, imgUrl }: TService) => {
+const ServiceCard = ({
+  _id,
+  name,
+  description,
+  imgUrl,
+  price,
+  duration,
+}: TService) => {
   return (
     <Card>
       <CardHeader>
         <CardTitle>{name}</CardTitle>
         <CardDescription>{description}</CardDescription>
+        <CardDescription>Price: ${price}</CardDescription>
+        <p>Duration: {duration} mins</p>
       </CardHeader>
       <CardContent className="">
         <img src={imgUrl} alt="" />

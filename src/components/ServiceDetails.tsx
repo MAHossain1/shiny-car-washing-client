@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useGetAllSlotsQuery } from '../redux/features/slots/slotApi';
 import { Link } from 'react-router-dom';
+import { useGetAllSlotsQuery } from '../redux/features/slots/slotApi';
+import { TSlot } from './types/component.types';
 
-const ServiceDetails = ({ service }) => {
+const ServiceDetails = ({ service }: any) => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split('T')[0]
   );
@@ -19,14 +20,14 @@ const ServiceDetails = ({ service }) => {
     { name: 'date', value: selectedDate },
   ]);
 
-  const handleDateChange = event => {
+  const handleDateChange = (event: any) => {
     setSelectedDate(event.target.value);
     refetch();
   };
 
-  const handleSlotClick = slot => {
+  const handleSlotClick = (slot: TSlot) => {
     setSelectedSlot(slot);
-    console.log('selected slot', selectedSlot);
+    // console.log(selectedSlot);s
   };
 
   return (
@@ -59,7 +60,9 @@ const ServiceDetails = ({ service }) => {
         />
       </div>
       {!data?.data?.length ? (
-        <p className="mb-2 font-semibold">No slots available for this date.</p>
+        <p className="mb-2 text-center font-semibold">
+          No slots available for this date.
+        </p>
       ) : null}
 
       <div className="mb-4">
@@ -68,13 +71,13 @@ const ServiceDetails = ({ service }) => {
         </label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:gap-4">
           {data?.data?.length &&
-            data?.data?.map(slot => (
+            data?.data?.map((slot: TSlot) => (
               <button
                 key={slot._id}
                 onClick={() => handleSlotClick(slot)}
                 className={`p-2 border rounded-md  ${
                   slot.isBooked !== 'available'
-                    ? 'bg-gray-300 cursor-not-allowed'
+                    ? 'bg-white-300 cursor-not-allowed'
                     : 'bg-green-500 text-white'
                 } ${selectedSlot?._id === slot._id && 'bg-yellow-500'} `}
                 disabled={slot.isBooked !== 'available'}
