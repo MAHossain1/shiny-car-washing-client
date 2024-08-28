@@ -8,7 +8,12 @@ const serviceApi = baseApi.injectEndpoints({
       }),
       providesTags: ['services'],
     }),
+    getSingleService: builder.query({
+      query: (id: string) => ({
+        url: `/services/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllServicesQuery } = serviceApi;
+export const { useGetAllServicesQuery, useGetSingleServiceQuery } = serviceApi;

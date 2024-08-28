@@ -10,7 +10,7 @@ import {
 } from './Card';
 import { Button } from './button';
 
-type TService = {
+export type TService = {
   _id: string;
   name: string;
   description: string;

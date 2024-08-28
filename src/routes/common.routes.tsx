@@ -1,7 +1,7 @@
 import Bookings from '../pages/Bookings';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
-import ServiceDetails from '../pages/ServiceDetails';
+import ServiceDetailsPage from '../pages/ServiceDetailsPage';
 import Services from '../pages/Services';
 
 export const commonPaths = [
@@ -21,7 +21,7 @@ export const commonPaths = [
       {
         name: 'Service Details',
         path: '/services/:id',
-        element: <ServiceDetails />,
+        element: <ServiceDetailsPage />,
       },
       {
         name: 'Bookings',

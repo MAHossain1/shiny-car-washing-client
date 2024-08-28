@@ -5,7 +5,7 @@ import ServiceCard from './ui/ServiceCard';
 const Featured = () => {
   const { data, isLoading, error } = useGetAllServicesQuery(undefined);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <MaximumWidthWrapper>
