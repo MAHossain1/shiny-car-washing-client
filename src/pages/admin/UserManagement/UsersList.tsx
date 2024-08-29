@@ -1,7 +1,9 @@
+import UsersTable from '../../../components/ui/Dashboard/UsersTable';
+
 const UsersList = () => {
   return (
     <div>
-      <h1>Users</h1>
+      <UsersTable />
     </div>
   );
 };

@@ -47,7 +47,7 @@ export const adminPaths = [
     children: [
       {
         name: 'User List',
-        path: 'user-list',
+        path: 'users',
         element: <UsersList />,
       },
       {

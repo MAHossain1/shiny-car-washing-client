@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    console.log('clicked');
+    // console.log('clicked');
     dispatch(logout());
   };
 
@@ -57,8 +57,6 @@ const Navbar = () => {
                     </Button>
                   </li>
                 )}
-                {/* dark light theme */}
-                {/* <ModeToggle /> */}
               </ul>
             </div>
 

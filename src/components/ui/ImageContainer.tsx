@@ -14,8 +14,6 @@ export function CarouselPlugin() {
     <Carousel
       plugins={[plugin.current]}
       className="w-full max-w-screen mx-auto "
-      // onMouseEnter={plugin.current.stop}
-      // onMouseLeave={plugin.current.reset}
     >
       <CarouselContent className="mx-auto">
         {images.map((image, index) => (
@@ -36,8 +34,6 @@ export function CarouselPlugin() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      {/* <CarouselPrevious />
-        <CarouselNext /> */}
     </Carousel>
   );
 }

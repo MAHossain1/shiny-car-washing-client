@@ -4,20 +4,20 @@ const userApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     getUsers: builder.query({
       query: () => ({
-        url: '/auth',
+        url: '/users',
       }),
       providesTags: ['users'],
     }),
 
     getSingleUser: builder.query({
       query: (id: string) => ({
-        url: `/auth/${id}`,
+        url: `/users/${id}`,
       }),
     }),
 
     updateUser: builder.mutation({
       query: ({ id, data }) => ({
-        url: `/auth/${id}`,
+        url: `/users/${id}`,
         method: 'PUT',
         body: data,
       }),
