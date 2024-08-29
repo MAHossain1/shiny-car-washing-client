@@ -1,7 +1,9 @@
+import SlotsTable from '../../../components/ui/Dashboard/SlotsTable';
+
 const SlotsList = () => {
   return (
     <div>
-      <h1>All Slots</h1>
+      <SlotsTable />
     </div>
   );
 };

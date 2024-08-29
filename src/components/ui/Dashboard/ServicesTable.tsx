@@ -122,7 +122,7 @@ const ServiceDataTable = () => {
                         <DialogTrigger asChild>
                           <Pencil
                             strokeWidth={2.5}
-                            className="text-blue-500 border-2 rounded border-green-500 cursor-pointer"
+                            className="text-green-500 border-2 rounded border-green-500 cursor-pointer"
                           />
                         </DialogTrigger>
 

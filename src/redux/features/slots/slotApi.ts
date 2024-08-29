@@ -22,7 +22,29 @@ const slotApi = baseApi.injectEndpoints({
       },
       providesTags: ['slots'],
     }),
+    updateSlot: builder.mutation({
+      query: ({ id, data }) => {
+        console.log('api2', data);
+        return {
+          url: `/slots/update-slot/${id}`,
+          method: 'PUT',
+          body: data,
+        };
+      },
+      invalidatesTags: ['slots'],
+    }),
+    deleteSlot: builder.mutation({
+      query: id => ({
+        url: `/slots/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['slots'],
+    }),
   }),
 });
 
-export const { useGetAllSlotsQuery } = slotApi;
+export const {
+  useGetAllSlotsQuery,
+  useUpdateSlotMutation,
+  useDeleteSlotMutation,
+} = slotApi;
