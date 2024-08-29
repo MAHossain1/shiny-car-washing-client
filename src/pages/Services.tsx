@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import MaximumWidthWrapper from '../components/shared/MaximumWidthWrapper';
+import { TService } from '../components/types/component.types';
 import ServiceCard from '../components/ui/ServiceCard';
 import { useGetAllServicesQuery } from '../redux/features/services/serviceApi';
-import { TService } from '../components/types/component.types';
-import Service from '../components/Service';
 
 const Services = () => {
   const [sort, setSort] = useState('name');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterByPrice, setFilterByPrice] = useState();
 
-  const { data = [], isLoading, error } = useGetAllServicesQuery(undefined);
+  const { data = [] } = useGetAllServicesQuery(undefined);
 
   const handleSort = (e: any) => {
     setSort(e.target.value);

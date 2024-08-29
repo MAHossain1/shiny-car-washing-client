@@ -36,8 +36,8 @@ const ServiceDetails = ({ service }: any) => {
         <div className="lg:flex-1 lg:mr-8 text-center mt-10">
           <h1 className="text-3xl font-bold mb-4">{service.name}</h1>
           <p className="mb-4">{service.description}</p>
-          <p className="mb-4">Price: ${service.price}</p>
           <p className="mb-4">Duration: {service.duration} mins</p>
+          <p className="mb-4">Price: ${service.price}</p>
         </div>
         <div className="flex justify-center mb-4 lg:mb-0 lg:flex-none">
           <img className="h-96 w-96" src={service.imgUrl} alt="Car Wash" />

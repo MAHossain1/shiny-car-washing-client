@@ -5,6 +5,7 @@ export type TService = {
   price: number;
   imgUrl: string;
   duration?: string;
+  createdAt?: Date;
 };
 
 export type TSlot = {
