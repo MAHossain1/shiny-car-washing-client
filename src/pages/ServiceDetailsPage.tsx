@@ -17,7 +17,7 @@ const ServiceDetailsPage = () => {
     );
   }
 
-  console.log('Service Data:', data.data);
+  // console.log('Service Data:', data.data);
 
   return (
     <MaximumWidthWrapper className="p-5">

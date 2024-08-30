@@ -100,7 +100,7 @@ const DashboardSidebar = () => {
 
   return (
     <div className="sticky top-10 mt-4 text-sm">
-      <Link to="/">CarWash</Link>
+      <Link to="/">SHINY Car Wash</Link>
       {sidebarItems?.map(i => (
         <div className="flex flex-col gap-2" key={i.title}>
           <span className="hidden lg:block text-gray-500 font-light my-4">
