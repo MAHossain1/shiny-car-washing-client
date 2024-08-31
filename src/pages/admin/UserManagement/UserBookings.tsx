@@ -1,7 +1,9 @@
+import BookingsTable from '../../../components/ui/Dashboard/BookingsTable';
+
 const UserBookings = () => {
   return (
     <div>
-      <h1>User Bookings</h1>
+      <BookingsTable />
     </div>
   );
 };

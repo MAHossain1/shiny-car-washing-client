@@ -10,8 +10,8 @@ const userApi = baseApi.injectEndpoints({
     }),
 
     getSingleUser: builder.query({
-      query: (id: string) => ({
-        url: `/users/${id}`,
+      query: (email: string) => ({
+        url: `/users/${email}`,
       }),
     }),
 
@@ -26,4 +26,8 @@ const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetUsersQuery, useUpdateUserMutation } = userApi;
+export const {
+  useGetUsersQuery,
+  useGetSingleUserQuery,
+  useUpdateUserMutation,
+} = userApi;
