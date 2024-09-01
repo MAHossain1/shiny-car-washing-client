@@ -2,7 +2,6 @@ import {
   BookCheck,
   CalendarPlus,
   ClipboardList,
-  CopyPlus,
   LayoutDashboard,
   ListTodo,
   UserRoundCheck,

@@ -1,4 +1,3 @@
-import Bookings from '../pages/Bookings';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import PaymentSuccess from '../pages/PaymentSuccess';
