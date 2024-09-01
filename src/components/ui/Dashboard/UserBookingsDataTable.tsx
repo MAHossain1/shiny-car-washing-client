@@ -14,7 +14,7 @@ import {
   TableRow,
 } from './table';
 
-const UserBookingsDataTable = ({ bookingsData }) => {
+const UserBookingsDataTable = ({ bookingsData }: any) => {
   return (
     <Card x-chunk="dashboard-06-chunk-0">
       <CardHeader>
@@ -40,7 +40,7 @@ const UserBookingsDataTable = ({ bookingsData }) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {bookingsData?.map(booking => {
+            {bookingsData?.map((booking: any) => {
               const {
                 customer: { name: customerName },
                 service: { name: serviceName },

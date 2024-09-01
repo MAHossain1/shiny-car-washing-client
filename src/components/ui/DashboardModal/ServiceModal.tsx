@@ -1,7 +1,8 @@
+import { TFormProps } from '../../types/component.types';
 import { DialogContent, DialogHeader, DialogTitle } from '../Dashboard/dialog';
 import ServiceForm from '../DashboardForms/ServiceForm';
 
-const ServiceModal = ({ form, title, onSubmit }) => {
+const ServiceModal = ({ form, title, onSubmit }: TFormProps) => {
   return (
     <DialogContent className="sm:max-w-[525px] max-h-screen overflow-y-scroll">
       <DialogHeader>

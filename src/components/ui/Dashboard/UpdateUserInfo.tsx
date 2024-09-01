@@ -4,8 +4,9 @@ import { useUpdateUserMutation } from '../../../redux/features/users/userApi';
 import { updateUserValidationSchema } from '../../schemas/serviceSchemas';
 import { DialogContent, DialogHeader, DialogTitle } from './dialog';
 import UserForm from '../DashboardForms/UserForm';
+import { TFormProps } from '../../types/component.types';
 
-const UpdateUserInfo = ({ data, setOpen }) => {
+const UpdateUserInfo = ({ data, setOpen }: TFormProps) => {
   const [updateUser] = useUpdateUserMutation();
 
   const { _id, name, email, phone, address } = data || {};
@@ -22,7 +23,7 @@ const UpdateUserInfo = ({ data, setOpen }) => {
     },
   });
 
-  async function onSubmit(data) {
+  async function onSubmit(data: any) {
     const updatedData = {
       id: _id,
       data: data,

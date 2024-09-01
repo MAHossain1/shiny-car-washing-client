@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useLoginMutation } from '../redux/features/auth/authApi';
 import { useDispatch } from 'react-redux';
-import { verifyToken } from '../utils/verifyToken';
-import { setUser } from '../redux/features/auth/authSlice';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { useLoginMutation } from '../redux/features/auth/authApi';
+import { setUser } from '../redux/features/auth/authSlice';
+import { verifyToken } from '../utils/verifyToken';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -51,9 +51,9 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-black bg-opacity-75 ">
+    <div className="h-screen w-screen bg-black bg-opacity-75 flex justify-center">
       <div className="max-auto max-w-md pt-12 grid place-content-center">
-        <h1 className="text-3xl text-center font-semibold text-white mb-10 uppercase">
+        <h1 className="text-3xl text-center font-semibold text-white mb-5">
           Login
         </h1>
         <form

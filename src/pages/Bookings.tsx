@@ -1,15 +1,15 @@
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../redux/hooks';
-import { selectUser } from '../redux/features/auth/authSlice';
-import { useCreateBookingMutation } from '../redux/features/booking/booking';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import { z } from 'zod';
 import { createBookingValidationSchema } from '../components/schemas/booking.schema';
-import { zodResolver } from '@hookform/resolvers/zod';
 import BookingForm from '../components/ui/BookingForm';
+import { selectUser } from '../redux/features/auth/authSlice';
+import { useCreateBookingMutation } from '../redux/features/booking/booking';
 import { useGetSingleServiceQuery } from '../redux/features/services/serviceApi';
-import { toast } from 'sonner';
+import { useAppSelector } from '../redux/hooks';
 
 const Bookings = () => {
   const location = useLocation();
@@ -40,7 +40,7 @@ const Bookings = () => {
     resolver: zodResolver(createBookingValidationSchema),
     defaultValues: {
       customerName: user?.name || '',
-      email: user?.userEmail || '',
+      email: user?.email || '',
       serviceId: serviceId || '',
       slotId: slotId || '',
       vehicleType: 'car',

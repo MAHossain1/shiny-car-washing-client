@@ -4,8 +4,9 @@ import { PlusCircle } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '../Card';
 import { Dialog, DialogTrigger } from './dialog';
 import { Button } from '../button';
+import UpdateUserInfo from './UpdateUserInfo';
 
-const UserInfo = ({ userData }) => {
+const UserInfo = ({ userData }: any) => {
   const [open, setOpen] = useState(false);
 
   const { name, email, phone, address } = userData;

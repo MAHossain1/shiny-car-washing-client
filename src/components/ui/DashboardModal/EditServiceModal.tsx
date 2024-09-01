@@ -4,8 +4,9 @@ import { toast } from 'sonner';
 import { useEditServiceMutation } from '../../../redux/features/services/serviceApi';
 import { createServiceValidationSchema } from '../../schemas/serviceSchemas';
 import ServiceModal from './ServiceModal';
+import { TFormProps } from '../../types/component.types';
 
-const EditServiceModal = ({ data, setOpen }) => {
+const EditServiceModal = ({ data, setOpen }: TFormProps) => {
   console.log(data, 'edit service modal');
   const [editService] = useEditServiceMutation();
 

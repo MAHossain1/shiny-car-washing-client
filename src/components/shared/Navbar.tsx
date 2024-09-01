@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-orange-800 text-white relative">
+    <header className="bg-gray-800 text-white relative">
       <nav className="h-[80px] md:h-[60px] px-4 flex items-center p-2 md:p-4 xl:p-8">
         <MaximumWidthWrapper>
           <div className="w-full flex items-center justify-between relative">
@@ -36,9 +36,9 @@ const Navbar = () => {
                 <li className="text-gray-200 hover:text-white">
                   <Link to="/services">Services</Link>
                 </li>
-                <li className="text-gray-200 hover:text-white">
+                {/* <li className="text-gray-200 hover:text-white">
                   <Link to="/bookings">Booking</Link>
-                </li>
+                </li> */}
                 {user?.role ? (
                   <>
                     <li className="text-gray-200 hover:text-white">

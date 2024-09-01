@@ -4,7 +4,7 @@ import { TService } from './types/component.types';
 import ServiceCard from './ui/ServiceCard';
 
 const Featured = () => {
-  const { data, isLoading, error } = useGetAllServicesQuery(undefined);
+  const { data, isLoading } = useGetAllServicesQuery(undefined);
 
   // console.log(data);
 
@@ -23,7 +23,6 @@ const Featured = () => {
           </div>
         </div>
       )}
-      {error && <div>Error: {error.message}</div>}
     </MaximumWidthWrapper>
   );
 };

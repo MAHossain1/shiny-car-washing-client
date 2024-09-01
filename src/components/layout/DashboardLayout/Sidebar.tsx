@@ -29,12 +29,12 @@ const DashboardSidebar = () => {
     {
       title: 'Service Management',
       items: [
-        {
-          icon: <CopyPlus />,
-          label: 'Add Service',
-          href: 'create-service',
-          visible: ['admin'],
-        },
+        // {
+        //   icon: <CopyPlus />,
+        //   label: 'Add Service',
+        //   href: 'create-service',
+        //   visible: ['admin'],
+        // },
         {
           icon: <ClipboardList />,
           label: 'Service List',
@@ -107,7 +107,7 @@ const DashboardSidebar = () => {
             {i.title}
           </span>
           {i.items.map(item => {
-            if (item.visible.includes(user?.role)) {
+            if (item.visible.includes(user?.role!)) {
               return (
                 <Link
                   to={item.href}

@@ -1,5 +1,4 @@
 import AdminDashboard from '../pages/admin/AdminDashboard';
-import CreateService from '../pages/admin/ServiceManagement/CreateService';
 import ServicesList from '../pages/admin/ServiceManagement/ServicesList';
 import CreateSlot from '../pages/admin/SlotManagement/CreateSlot';
 import SlotsList from '../pages/admin/SlotManagement/SlotsList';
@@ -19,11 +18,6 @@ export const adminPaths = [
         name: 'Service List',
         path: 'service-list',
         element: <ServicesList />,
-      },
-      {
-        name: 'Add Service',
-        path: 'create-service',
-        element: <CreateService />,
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { TFormProps } from '../../types/component.types';
 import { Button } from '../button';
 import {
   Form,
@@ -9,7 +10,7 @@ import {
 } from '../Dashboard/form';
 import { Input } from '../Dashboard/input';
 
-const UserForm = ({ form, onSubmit }) => {
+const UserForm = ({ form, onSubmit }: TFormProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">

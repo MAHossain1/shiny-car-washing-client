@@ -1,13 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import { routeGenerator } from '../utils/routesGenerator';
-import { commonPaths } from './common.routes';
 import DashboardLayout from '../components/layout/DashboardLayout/DashboardLayout';
-import { adminPaths } from './admin.routes';
-import { userPaths } from './user.routes';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
 import NotFound from '../pages/NotFound';
+import Signup from '../pages/Signup';
+import { routeGenerator } from '../utils/routesGenerator';
+import { adminPaths } from './admin.routes';
+import { commonPaths } from './common.routes';
+import { userPaths } from './user.routes';
 
 const router = createBrowserRouter([
   {

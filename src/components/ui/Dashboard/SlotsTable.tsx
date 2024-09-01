@@ -1,4 +1,4 @@
-import { CloudCog, Trash } from 'lucide-react';
+import { Trash } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '../../../lib/utils';

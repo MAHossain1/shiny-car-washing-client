@@ -44,7 +44,7 @@ const BookingsTable = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {bookingsData?.data?.map(booking => {
+            {bookingsData?.data?.map((booking: any) => {
               const {
                 // serviceId: { name: serviceName = 'No Service' } = {},
                 customerId: { name: customerName = 'Unknown' } = {},

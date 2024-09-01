@@ -1,6 +1,3 @@
-import UserBookingsDataTable from '../../components/ui/Dashboard/UserBookingsDataTable';
-import UserInfo from '../../components/ui/Dashboard/UserInfo';
-import UpcomingBookings from '../../components/ui/UpcomingBookings';
 import { selectUser } from '../../redux/features/auth/authSlice';
 import { useGetSingleUserBookingsQuery } from '../../redux/features/booking/booking';
 import { useGetSingleUserQuery } from '../../redux/features/users/userApi';
@@ -8,10 +5,13 @@ import { useAppSelector } from '../../redux/hooks';
 
 const UserDashboard = () => {
   const user = useAppSelector(selectUser);
-  const { data: userData = {}, isLoading } = useGetSingleUserQuery(user?.email);
+  const { data: userData = {}, isLoading } = useGetSingleUserQuery(
+    user?.email!
+  );
 
-  const { data: bookingsData = [], isLoading: bookingIsLoading } =
-    useGetSingleUserBookingsQuery(userData?.data?._id);
+  const { isLoading: bookingIsLoading } = useGetSingleUserBookingsQuery(
+    userData?.data?._id
+  );
 
   if (isLoading) return <p>Loading...</p>;
 

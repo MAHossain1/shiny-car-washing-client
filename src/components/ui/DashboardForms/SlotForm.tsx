@@ -1,4 +1,5 @@
 import { TFormProps } from '../../types/component.types';
+import { Button } from '../button';
 import {
   Form,
   FormControl,
@@ -8,35 +9,19 @@ import {
   FormMessage,
 } from '../Dashboard/form';
 import { Input } from '../Dashboard/input';
-import { Textarea } from '../Dashboard/textArea';
-import { Button } from '../button';
 
-const ServiceForm = ({ form, onSubmit }: TFormProps) => {
+const SlotForm = ({ form, onSubmit }: TFormProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
         <FormField
           control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="">
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="name" {...field} className="w-full" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="description"
+          name="service"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Service Id</FormLabel>
               <FormControl>
-                <Textarea placeholder="description" {...field} />
+                <Input placeholder="service id" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -45,50 +30,51 @@ const ServiceForm = ({ form, onSubmit }: TFormProps) => {
 
         <FormField
           control={form.control}
-          name="price"
+          name="date"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Price</FormLabel>
+              <FormLabel>Date</FormLabel>
               <FormControl>
-                <Input placeholder="price" {...field} />
+                <Input placeholder="2024-08-29" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
-          name="duration"
+          name="startTime"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Duration</FormLabel>
+              <FormLabel>Start Time</FormLabel>
               <FormControl>
-                <Input placeholder="duration" {...field} />
+                <Input placeholder="start time" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
-          name="imgUrl"
+          name="endTime"
           render={({ field }) => (
-            <FormItem className="">
-              <FormLabel>Image URL</FormLabel>
+            <FormItem>
+              <FormLabel>End Time</FormLabel>
               <FormControl>
-                <Input placeholder="Image Url" {...field} className="w-full" />
+                <Input placeholder="end time" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
-        <Button type="submit">Submit</Button>
+        <div className="mt-8">
+          <Button type="submit" className="w-full">
+            Create Slot
+          </Button>
+        </div>
       </form>
     </Form>
   );
 };
 
-export default ServiceForm;
+export default SlotForm;

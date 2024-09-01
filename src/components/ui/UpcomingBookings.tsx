@@ -1,12 +1,18 @@
 import { Card, CardContent, CardTitle } from './Card';
 
-const UpcomingBookings = ({ bookingsData }) => {
-  const getAmPm = time => {
-    const [hours, minutes] = time.split(':').map(Number);
+const UpcomingBookings = ({ bookingsData }: any) => {
+  const getAmPm = (time: {
+    split: (arg0: string) => {
+      (): any;
+      new (): any;
+      map: { (arg0: NumberConstructor): [any, any]; new (): any };
+    };
+  }) => {
+    const [hours] = time.split(':').map(Number);
     return hours < 12 ? 'AM' : 'PM';
   };
 
-  const upcomingBookings = bookingsData.filter(booking => {
+  const upcomingBookings = bookingsData.filter((booking: any) => {
     const startTimeInMs = new Date(
       `${booking.slot.date}T${booking.slot.startTime}`
     ).getTime();
@@ -22,7 +28,7 @@ const UpcomingBookings = ({ bookingsData }) => {
         <div>No upcoming bookings. </div>
       ) : (
         <div className="flex gap-10">
-          {upcomingBookings.map(booking => (
+          {upcomingBookings.map((booking: any) => (
             <Card
               key={booking._id}
               className="w-[280px] p-4 flex flex-col items-center"

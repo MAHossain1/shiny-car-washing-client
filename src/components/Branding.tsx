@@ -7,11 +7,11 @@ const Branding = () => {
     <div className="relative">
       <CarouselPlugin />
       <div className="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 md:gap-7 text-center md:text-left">
-        <p className="text-2xl md:text-4xl font-bold text-red-500 uppercase">
-          Exclusive Offer
+        <p className="text-2xl md:text-4xl font-bold text-yellow-400 uppercase">
+          Limited-Time Offer
         </p>
-        <h1 className="text-3xl md:text-6xl font-bold text-lime-500 uppercase">
-          We protect your <br /> investment
+        <h1 className="text-3xl md:text-6xl font-bold text-blue-500 uppercase">
+          Safeguard Your <br /> Valuable Asset
         </h1>
         <Button
           asChild

@@ -53,6 +53,8 @@ const ServiceDataTable = () => {
   const handleDialogOpen = (id: string | null) => setOpenServiceId(id);
   const handleDialogClose = () => setOpenServiceId(null);
 
+  // const createdAt: Date | undefined = getCreatedAt();
+
   return (
     <Card x-chunk="dashboard-06-chunk-0">
       <CardHeader>
@@ -101,7 +103,7 @@ const ServiceDataTable = () => {
                   <TableCell className="font-medium">{name}</TableCell>
                   <TableCell>{description}</TableCell>
                   <TableCell className="hidden md:table-cell">
-                    {new Date(createdAt).toLocaleDateString()}
+                    {new Date(createdAt as Date).toLocaleDateString()}
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
                     {duration}
@@ -115,9 +117,6 @@ const ServiceDataTable = () => {
                       <Dialog
                         open={openServiceId === _id}
                         onOpenChange={() => handleDialogOpen(_id)}
-                        // onOpenChange={isOpen => {
-                        //   if (!isOpen) handleDialogClose(); // Close the modal if 'isOpen' is false
-                        // }}
                       >
                         <DialogTrigger asChild>
                           <Pencil

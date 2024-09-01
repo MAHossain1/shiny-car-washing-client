@@ -1,4 +1,4 @@
-import { PlusCircle, Trash } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
 import {
   useGetUsersQuery,
   useUpdateUserMutation,
@@ -11,14 +11,6 @@ import {
   CardTitle,
 } from '../Card';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from './table';
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -29,6 +21,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from './alertDialog';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from './table';
 
 const UsersTable = () => {
   const { data: usersData = [], isLoading } = useGetUsersQuery({});

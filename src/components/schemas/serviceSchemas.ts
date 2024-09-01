@@ -46,3 +46,21 @@ export const updateUserValidationSchema = z.object({
     .optional(),
   address: z.string().min(1, { message: 'Address is required' }).optional(),
 });
+
+const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+export const createSlotValidationSchema = z.object({
+  service: z.string(),
+  date: z
+    .string()
+    .regex(dateRegex, { message: 'Invalid date format (YYYY-MM-DD)' })
+    .refine(
+      value => {
+        const date = new Date(value);
+        return !isNaN(date.getTime()) && date.toISOString().startsWith(value);
+      },
+      { message: 'Invalid date' }
+    ),
+  startTime: z.string({ required_error: 'Start time is required' }),
+  endTime: z.string({ required_error: 'End time is required' }),
+});

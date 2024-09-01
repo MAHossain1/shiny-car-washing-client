@@ -7,12 +7,10 @@ const ServiceDetails = ({ service }: any) => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split('T')[0]
   );
-  const [selectedSlot, setSelectedSlot] = useState({});
-
-  // console.log(selectedSlot);
+  const [selectedSlot, setSelectedSlot] = useState<TSlot | null>(null);
 
   const {
-    data = [],
+    data = { data: [] }, // Initialize with default values
     isLoading,
     refetch,
   } = useGetAllSlotsQuery([
@@ -27,7 +25,6 @@ const ServiceDetails = ({ service }: any) => {
 
   const handleSlotClick = (slot: TSlot) => {
     setSelectedSlot(slot);
-    // console.log(selectedSlot);s
   };
 
   return (
@@ -59,7 +56,7 @@ const ServiceDetails = ({ service }: any) => {
           className="p-2 border rounded-md"
         />
       </div>
-      {!data?.data?.length ? (
+      {!data.data.length ? (
         <p className="mb-2 text-center font-semibold">
           No slots available for this date.
         </p>
@@ -70,16 +67,16 @@ const ServiceDetails = ({ service }: any) => {
           The Slots Are Available
         </label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:gap-4">
-          {data?.data?.length &&
-            data?.data?.map((slot: TSlot) => (
+          {data.data.length &&
+            data.data.map((slot: TSlot) => (
               <button
                 key={slot._id}
                 onClick={() => handleSlotClick(slot)}
-                className={`p-2 border rounded-md  ${
+                className={`p-2 border rounded-md ${
                   slot.isBooked !== 'available'
-                    ? 'bg-white-300 cursor-not-allowed'
+                    ? 'bg-gray-300 cursor-not-allowed'
                     : 'bg-green-500 text-white'
-                } ${selectedSlot?._id === slot._id && 'bg-yellow-500'} `}
+                } ${selectedSlot?._id === slot._id ? 'bg-yellow-500' : ''}`}
                 disabled={slot.isBooked !== 'available'}
               >
                 {slot.startTime} - {slot.endTime}
@@ -88,9 +85,9 @@ const ServiceDetails = ({ service }: any) => {
         </div>
       </div>
 
-      {selectedSlot?._id && (
+      {selectedSlot && selectedSlot._id && (
         <Link to={'/bookings'} state={selectedSlot}>
-          <button className="mt-4 w-1/2  py-2 bg-blue-500 text-white rounded-md mx-auto block">
+          <button className="mt-4 w-1/2 py-2 bg-blue-500 text-white rounded-md mx-auto block">
             Book This Service
           </button>
         </Link>

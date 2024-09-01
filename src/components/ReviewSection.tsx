@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import MaximumWidthWrapper from './shared/MaximumWidthWrapper';
-import ScrollToTop from './ui/ScrollToTop';
 
 const ReviewSection = () => {
   const [feedback, setFeedback] = useState('');
@@ -20,7 +19,7 @@ const ReviewSection = () => {
       feedback: 'Service was average, but the atmosphere was good.',
     },
   ]);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Change this based on actual login status
+  const [isLoggedIn] = useState(true); // Change this based on actual login status
 
   const handleRating = (value: any) => {
     setRating(value);

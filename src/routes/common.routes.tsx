@@ -24,11 +24,7 @@ export const commonPaths = [
         path: '/services/:id',
         element: <ServiceDetailsPage />,
       },
-      {
-        name: 'Bookings',
-        path: '/bookings',
-        element: <Bookings />,
-      },
+
       {
         name: 'Payment Success',
         path: '/payment-success',

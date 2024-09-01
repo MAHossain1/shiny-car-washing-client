@@ -16,3 +16,11 @@ export type TSlot = {
   endTime: string;
   isBooked: string;
 };
+
+export type TFormProps = {
+  form?: any;
+  onSubmit?: any;
+  title?: any;
+  data?: any;
+  setOpen?: any;
+};

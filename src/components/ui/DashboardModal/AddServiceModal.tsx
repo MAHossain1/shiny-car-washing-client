@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import ServiceModal from './ServiceModal';
 
-const AddServiceModal = ({ setOpen }) => {
+const AddServiceModal = ({ setOpen }: any) => {
   const [addService] = useAddServiceMutation();
 
   const title = 'Add Service';
@@ -20,7 +20,7 @@ const AddServiceModal = ({ setOpen }) => {
     },
   });
 
-  async function onSubmit(data) {
+  async function onSubmit(data: any) {
     // Add service to the database here
     try {
       const res = await addService(data);
