@@ -1,49 +1,71 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { toast } from 'sonner';
+import { selectUser } from '../redux/features/auth/authSlice';
+import {
+  useCreateReviewMutation,
+  useGetReviewsQuery,
+} from '../redux/features/review/reviewApi';
+import { useAppSelector } from '../redux/hooks';
 import MaximumWidthWrapper from './shared/MaximumWidthWrapper';
+import { Button } from './ui/button';
 
 const ReviewSection = () => {
   const [feedback, setFeedback] = useState('');
   const [rating, setRating] = useState(0);
-  const [reviews, setReviews] = useState([
-    {
-      rating: 5,
-      feedback: 'Excellent service, loved the atmosphere!',
-    },
-    {
-      rating: 4,
-      feedback: 'Good service, but the waiting area was not good.',
-    },
-    {
-      rating: 3,
-      feedback: 'Service was average, but the atmosphere was good.',
-    },
-  ]);
-  const [isLoggedIn] = useState(true); // Change this based on actual login status
+  const user = useAppSelector(selectUser);
+  const [createReview] = useCreateReviewMutation();
+  const { data, isLoading, refetch } = useGetReviewsQuery(undefined);
 
   const handleRating = (value: any) => {
     setRating(value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('clicked');
-    if (feedback && rating) {
-      const newReview = { rating, feedback };
-      setReviews([...reviews, newReview]);
-      setFeedback('');
-      setRating(0);
+    if (feedback && rating && user) {
+      const reviewData = {
+        reviewText: feedback,
+        ratting: rating,
+      };
+
+      await createReview(reviewData);
+      refetch();
+      toast.success('Review added successfully done.');
     }
   };
 
-  const averageRating = reviews.length
+  const averageRating = data?.data?.length
     ? (
-        reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
+        data?.data?.reduce(
+          (sum: number, review: any) => sum + review.ratting,
+          0
+        ) / data?.data?.length
       ).toFixed(1)
     : 0;
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <section className="h-screen flex flex-col justify-center">
-      <MaximumWidthWrapper className="">
+    <section className="relative min-h-screen flex flex-col justify-center mt-10 pt-5 pb-10">
+      {!user && (
+        <motion.div
+          className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Button
+            className="bg-white text-black px-8 py-2 rounded"
+            onClick={() => (window.location.href = '/login')}
+          >
+            Login
+          </Button>
+        </motion.div>
+      )}
+      <MaximumWidthWrapper>
         <div className="text-center">
           <h1 className="text-5xl font-semibold">What our client say</h1>
         </div>
@@ -52,21 +74,6 @@ const ReviewSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="col-span-1 border rounded-md">
               <div className="bg-white p-2">
-                {!isLoggedIn && (
-                  <motion.div
-                    className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <button
-                      className="bg-white text-black px-4 py-2 rounded"
-                      onClick={() => (window.location.href = '/login')}
-                    >
-                      Login
-                    </button>
-                  </motion.div>
-                )}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -104,9 +111,9 @@ const ReviewSection = () => {
               </div>
             </div>
             <div className="col-span-2 flex flex-col md:flex-row gap-5 flex-wrap">
-              {reviews.slice(-2).map((review, index) => (
+              {data?.data?.slice(-2).map((review: any) => (
                 <motion.div
-                  key={index}
+                  key={review._id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -114,15 +121,30 @@ const ReviewSection = () => {
                 >
                   <div className="bg-white p-2 h-[180px] border rounded-md">
                     <div className="flex gap-5 p-0">
-                      <div className="flex flex-col justify-between">
-                        {review.feedback}
+                      <div className="flex flex-col gap-1 justify-between">
                         <div>
-                          <p className="font-semibold">Arman Hossain</p>
-                          <p className="text-gray-300">Instructor</p>
+                          <p>{review?.reviewText}</p>
+                          <p>
+                            Customer Ratting: <strong>{review?.ratting}</strong>{' '}
+                            out of 5
+                          </p>
+                        </div>
+
+                        <p>
+                          <strong></strong>
+                        </p>
+
+                        <div>
+                          <p className="font-semibold">
+                            {review?.customerId.name}
+                          </p>
+                          <p className="text-gray-500">
+                            Email: {review?.customerId?.email}
+                          </p>
                         </div>
                       </div>
                       <img
-                        src="/CarWash.jpg"
+                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
                         alt=""
                         className="w-32 h-36 object-cover rounded-2xl"
                       />

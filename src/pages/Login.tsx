@@ -40,7 +40,7 @@ const Login = () => {
       });
       navigate('/');
 
-      console.log(user);
+      // console.log(user);
     } catch (error: any) {
       toast.error('Something went wrong!', {
         id: toastId,

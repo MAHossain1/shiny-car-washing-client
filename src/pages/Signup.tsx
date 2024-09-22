@@ -30,7 +30,7 @@ const Signup = () => {
     try {
       const result = await signup(formData).unwrap();
 
-      console.log(result);
+      // console.log(result);
       if (result.success) {
         toast.success(result.message, {
           duration: 2000,
