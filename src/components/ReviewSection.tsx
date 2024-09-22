@@ -124,15 +124,26 @@ const ReviewSection = () => {
                       <div className="flex flex-col gap-1 justify-between">
                         <div>
                           <p>{review?.reviewText}</p>
-                          <p>
-                            Customer Ratting: <strong>{review?.ratting}</strong>{' '}
-                            out of 5
-                          </p>
                         </div>
 
-                        <p>
-                          <strong></strong>
-                        </p>
+                        <div className="flex text-yellow-500">
+                          {Array.from(
+                            { length: Math.round(review.ratting) },
+                            (_, index) => (
+                              <svg
+                                key={index}
+                                className="w-5 h-5"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.713 1.812 8.076L12 18.347l-7.748 4.748 1.812-8.076L.587 9.306l8.332-1.151L12 .587z" />
+                              </svg>
+                            )
+                          )}
+                          <span className="ml-2 text-sm text-gray-600">
+                            {review.ratting.toFixed(1)}
+                          </span>
+                        </div>
 
                         <div>
                           <p className="font-semibold">
