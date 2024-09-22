@@ -36,9 +36,11 @@ const Navbar = () => {
                 <li className="text-gray-200 hover:text-white">
                   <Link to="/services">Services</Link>
                 </li>
-                {/* <li className="text-gray-200 hover:text-white">
-                  <Link to="/bookings">Booking</Link>
-                </li> */}
+                {user && (
+                  <li className="text-gray-200 hover:text-white">
+                    <Link to="/reviews">Reviews</Link>
+                  </li>
+                )}
                 {user?.role ? (
                   <>
                     <li className="text-gray-200 hover:text-white">

@@ -1,6 +1,7 @@
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import PaymentSuccess from '../pages/PaymentSuccess';
+import Reviews from '../pages/reviews';
 import ServiceDetailsPage from '../pages/ServiceDetailsPage';
 import Services from '../pages/Services';
 
@@ -17,6 +18,11 @@ export const commonPaths = [
         name: 'Services',
         path: '/services',
         element: <Services />,
+      },
+      {
+        name: 'Reviews',
+        path: '/reviews',
+        element: <Reviews />,
       },
       {
         name: 'Service Details',
