@@ -2,7 +2,7 @@ import Bookings from '../pages/Bookings';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import PaymentSuccess from '../pages/PaymentSuccess';
-import Reviews from '../pages/reviews';
+import Reviews from '../pages/Reviews';
 import ServiceDetailsPage from '../pages/ServiceDetailsPage';
 import Services from '../pages/Services';
 

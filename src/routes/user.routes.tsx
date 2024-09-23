@@ -3,7 +3,22 @@ import Profile from '../pages/user/Profile';
 import UserDashboard from '../pages/user/UserDashboard';
 import PastBookings from '../pages/user/PastBookings';
 
-export const userPaths = [
+type TUserPath =
+  | {
+      name: string;
+      path: string;
+      element: JSX.Element;
+    }
+  | {
+      title: string;
+      children: {
+        name: string;
+        path: string;
+        element: JSX.Element;
+      }[];
+    };
+
+export const userPaths: TUserPath[] = [
   {
     name: 'Dashboard',
     path: 'dashboard',
@@ -12,11 +27,6 @@ export const userPaths = [
   {
     title: 'User Bookings',
     children: [
-      // {
-      //   name: "Past Bookings",
-      //   path: "past-bookings",
-      //   element: <PastBookings />
-      // },
       {
         name: 'Upcoming Bookings',
         path: 'my-bookings',

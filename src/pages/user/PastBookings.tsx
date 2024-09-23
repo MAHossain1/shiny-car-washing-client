@@ -1,11 +1,9 @@
 import UserBookingsDataTable from '../../components/ui/Dashboard/UserBookingsDataTable';
-import { selectUser } from '../../redux/features/auth/authSlice';
 import { useGetMyBookingsQuery } from '../../redux/features/booking/booking';
-import { useAppSelector } from '../../redux/hooks';
 import { getPastBookings } from '../../utils/getPastBookings';
 
 const PastBookings = () => {
-  const user = useAppSelector(selectUser);
+  // const user = useAppSelector(selectUser);
   const { data: bookingsData = [], isLoading } = useGetMyBookingsQuery({});
 
   // console.log(bookingsData, 'booking data');

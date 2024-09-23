@@ -30,7 +30,7 @@ const UserInfo = ({ userData }: any) => {
               </span>
             </Button>
           </DialogTrigger>
-          <UpdateUserInfo data={userData} setOpen={setOpen} />
+          <UpdateUserInfo data={userData} />
         </Dialog>
       </CardFooter>
     </Card>

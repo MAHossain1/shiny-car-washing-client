@@ -19,7 +19,7 @@ const Profile = () => {
       </h1>
       <p className="text-center my-2">Update your info as your wish.</p>
       <div className="w-[380px] p-8 mx-auto bg-white rounded">
-        <UpdateUserInfo user={userData.data} />
+        <UpdateUserInfo data={userData.data} />
       </div>
     </div>
   );

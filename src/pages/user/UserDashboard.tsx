@@ -1,11 +1,6 @@
 import UserBookingsDataTable from '../../components/ui/Dashboard/UserBookingsDataTable';
-import UserInfo from '../../components/ui/Dashboard/UserInfo';
 import { selectUser } from '../../redux/features/auth/authSlice';
-import {
-  useGetMyBookingsQuery,
-  useGetSingleUserBookingsQuery,
-} from '../../redux/features/booking/booking';
-import { useGetSingleUserQuery } from '../../redux/features/users/userApi';
+import { useGetMyBookingsQuery } from '../../redux/features/booking/booking';
 import { useAppSelector } from '../../redux/hooks';
 
 const UserDashboard = () => {
