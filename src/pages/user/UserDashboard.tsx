@@ -1,3 +1,4 @@
+import UserInfo from '../../components/ui/Dashboard/UserInfo';
 import { selectUser } from '../../redux/features/auth/authSlice';
 import { useGetSingleUserBookingsQuery } from '../../redux/features/booking/booking';
 import { useGetSingleUserQuery } from '../../redux/features/users/userApi';
@@ -23,8 +24,8 @@ const UserDashboard = () => {
         </h1>
         <p className="text-sm text-gray-500">Welcome, {user?.name}</p>
 
-        {/* <UserInfo userData={userData.data} /> */}
-        {/* {!bookingIsLoading && bookingData?.data?.length > 0 &&
+        {/* <UserInfo userData={userData.data} />
+        {!bookingIsLoading && bookingData?.data?.length > 0 &&
           bookingData.data.map((booking) => <BookingInfo booking={booking} />)} */}
         {bookingIsLoading ? (
           <p>Loading bookings...</p>

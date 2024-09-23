@@ -15,6 +15,7 @@ import {
 } from './table';
 
 const UserBookingsDataTable = ({ bookingsData }: any) => {
+  console.log(bookingsData, 'booking table');
   return (
     <Card x-chunk="dashboard-06-chunk-0">
       <CardHeader>
@@ -25,9 +26,9 @@ const UserBookingsDataTable = ({ bookingsData }: any) => {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px] sm:table-cell">
-                Customer Name
-              </TableHead>
+              {/* <TableHead className="w-[100px] sm:table-cell">
+                Service Name
+              </TableHead> */}
               <TableHead>Service Name</TableHead>
               <TableHead className="">Start Time</TableHead>
               <TableHead className="">Vehicle Type</TableHead>
@@ -36,28 +37,28 @@ const UserBookingsDataTable = ({ bookingsData }: any) => {
               <TableHead className="">Registration Plate</TableHead>
               <TableHead className="">Payment Status</TableHead>
               <TableHead className="">Transaction ID</TableHead>
-              <TableHead className="">Created At</TableHead>
+              {/* <TableHead className="">Created At</TableHead> */}
             </TableRow>
           </TableHeader>
           <TableBody>
             {bookingsData?.map((booking: any) => {
               const {
-                customer: { name: customerName },
-                service: { name: serviceName },
-                slot: { startTime },
+                // customerId: { name: customerName },
+                serviceId: { name: serviceName },
+                slotId: { startTime },
                 transactionId,
                 paymentStatus,
                 vehicleType,
                 vehicleBrand,
                 vehicleModel,
                 registrationPlate,
-                createdAt,
+                // createdAt,
               } = booking;
               return (
                 <TableRow>
-                  <TableCell className="sm:table-cell">
+                  {/* <TableCell className="sm:table-cell">
                     {customerName}
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell className="font-medium">{serviceName}</TableCell>
                   <TableCell>{startTime}</TableCell>
                   <TableCell>{vehicleType}</TableCell>
@@ -66,9 +67,9 @@ const UserBookingsDataTable = ({ bookingsData }: any) => {
                   <TableCell>{registrationPlate}</TableCell>
                   <TableCell>{paymentStatus}</TableCell>
                   <TableCell>{transactionId}</TableCell>
-                  <TableCell>
+                  {/* <TableCell>
                     {new Date(createdAt).toLocaleDateString()}
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               );
             })}

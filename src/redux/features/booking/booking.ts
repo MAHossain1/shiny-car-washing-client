@@ -17,6 +17,12 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       providesTags: ['bookings'],
     }),
+    getMyBookings: builder.query({
+      query: () => ({
+        url: '/bookings/my-bookings',
+      }),
+      providesTags: ['bookings'],
+    }),
     getSingleUserBookings: builder.query({
       query: (id: string) => ({
         url: `/bookings/${id}`,
@@ -29,5 +35,6 @@ const bookingApi = baseApi.injectEndpoints({
 export const {
   useCreateBookingMutation,
   useGetSingleUserBookingsQuery,
+  useGetMyBookingsQuery,
   useGetAllBookingsQuery,
 } = bookingApi;
