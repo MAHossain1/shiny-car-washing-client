@@ -35,6 +35,12 @@ const BookingsTable = () => {
               <TableHead className="w-[100px] sm:table-cell">
                 Customer Name
               </TableHead>
+              <TableHead className="w-[100px] sm:table-cell">
+                Transaction ID
+              </TableHead>
+              <TableHead className="w-[100px] sm:table-cell">
+                Payment Status
+              </TableHead>
               {/* <TableHead className="">Start Time</TableHead> */}
               <TableHead className="">Vehicle Type</TableHead>
               <TableHead className="">Vehicle Brand</TableHead>
@@ -49,7 +55,8 @@ const BookingsTable = () => {
                 // serviceId: { name: serviceName = 'No Service' } = {},
                 customerId: { name: customerName = 'Unknown' } = {},
                 // slotId = {},
-
+                transactionId,
+                paymentStatus,
                 vehicleType,
                 vehicleBrand,
                 vehicleModel,
@@ -57,6 +64,8 @@ const BookingsTable = () => {
                 createdAt,
               } = booking;
 
+              const paymentDisplayStatus =
+                paymentStatus === 'Paid' ? 'Paid' : 'Pending';
               //   const { startTime = 'Not Specified' } = slotId || {};
 
               //   console.log('come on baby🚀🚀🚀🚀🚀', booking.customerId);
@@ -67,6 +76,8 @@ const BookingsTable = () => {
                     {customerName}
                   </TableCell>
                   {/* <TableCell>{startTime}</TableCell> */}
+                  <TableCell>{transactionId}</TableCell>
+                  <TableCell>{paymentDisplayStatus}</TableCell>
                   <TableCell>{vehicleType}</TableCell>
                   <TableCell>{vehicleBrand}</TableCell>
                   <TableCell>{vehicleModel}</TableCell>

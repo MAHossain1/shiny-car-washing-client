@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { createBookingValidationSchema } from '../components/schemas/booking.schema';
@@ -33,8 +33,6 @@ const Bookings = () => {
   if (isLoading) {
     return <p>Loading service details...</p>;
   }
-
-  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof createBookingValidationSchema>>({
     resolver: zodResolver(createBookingValidationSchema),

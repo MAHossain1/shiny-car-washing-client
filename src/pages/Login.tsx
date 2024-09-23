@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { setUser } from '../redux/features/auth/authSlice';
 import { verifyToken } from '../utils/verifyToken';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -14,7 +19,7 @@ const Login = () => {
   const [message, setMessage] = useState('');
   const [login] = useLoginMutation();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -38,7 +43,8 @@ const Login = () => {
         id: toastId,
         duration: 2000,
       });
-      navigate('/');
+      // navigate('/');
+      navigate(from, { replace: true });
 
       // console.log(user);
     } catch (error: any) {

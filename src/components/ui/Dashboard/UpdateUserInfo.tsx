@@ -1,61 +1,38 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
+import { TUser } from '../../../redux/features/auth/authSlice';
 import { useUpdateUserMutation } from '../../../redux/features/users/userApi';
-import { updateUserValidationSchema } from '../../schemas/serviceSchemas';
-import { DialogContent, DialogHeader, DialogTitle } from './dialog';
 import UserForm from '../DashboardForms/UserForm';
-import { TFormProps } from '../../types/component.types';
 
-const UpdateUserInfo = ({ data, setOpen }: TFormProps) => {
+const UpdateUserInfo = ({ user }: { user: TUser }) => {
   const [updateUser] = useUpdateUserMutation();
 
-  const { _id, name, email, phone, address } = data || {};
-
-  const title = 'Update User';
-
   const form = useForm({
-    resolver: zodResolver(updateUserValidationSchema),
     defaultValues: {
-      name: name || '',
-      email: email || '',
-      phone: phone || '',
-      address: address || '',
+      name: user?.name || '',
+      email: user?.email || '',
+      phone: user?.phone || '',
+      address: user?.address || '',
     },
   });
 
-  async function onSubmit(data: any) {
-    const updatedData = {
-      id: _id,
+  const onSubmit = async (data: FieldValues) => {
+    const updatedUserData = {
+      id: user._id,
       data: data,
     };
-
-    // Edit service to the database here
-    try {
-      const res = await updateUser(updatedData);
-      if (res.data.success) {
-        //toast message
-        console.log('User updated successfully');
-        console.log(res);
-      }
-
-      setOpen(false);
-      // Reset form fields
-      form.reset();
-    } catch (err) {
-      console.log(err);
+    const res = await updateUser(updatedUserData).unwrap();
+    console.log('data', res);
+    if (res.success) {
+      console.log('User updated successfully');
+    } else {
+      console.error('Failed to update user');
     }
-  }
+  };
 
   return (
-    <>
-      <DialogContent className="sm:max-w-[525px] max-h-screen overflow-y-scroll">
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-        </DialogHeader>
-
-        <UserForm form={form} onSubmit={onSubmit} />
-      </DialogContent>
-    </>
+    <div>
+      <UserForm form={form} onSubmit={onSubmit} />
+    </div>
   );
 };
 
