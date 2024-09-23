@@ -83,8 +83,8 @@ const DashboardSidebar = () => {
 
         {
           icon: <BookCheck />,
-          label: 'Bookings',
-          href: 'my-bookings',
+          label: 'Past Bookings',
+          href: 'my-past-bookings',
           visible: ['user'],
         },
         {
