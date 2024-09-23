@@ -1,18 +1,22 @@
+import UserBookingsDataTable from '../../components/ui/Dashboard/UserBookingsDataTable';
 import UserInfo from '../../components/ui/Dashboard/UserInfo';
 import { selectUser } from '../../redux/features/auth/authSlice';
-import { useGetSingleUserBookingsQuery } from '../../redux/features/booking/booking';
+import {
+  useGetMyBookingsQuery,
+  useGetSingleUserBookingsQuery,
+} from '../../redux/features/booking/booking';
 import { useGetSingleUserQuery } from '../../redux/features/users/userApi';
 import { useAppSelector } from '../../redux/hooks';
 
 const UserDashboard = () => {
   const user = useAppSelector(selectUser);
-  const { data: userData = {}, isLoading } = useGetSingleUserQuery(
-    user?.email!
-  );
+  const { data: bookingsData = [], isLoading } = useGetMyBookingsQuery({});
 
-  const { isLoading: bookingIsLoading } = useGetSingleUserBookingsQuery(
-    userData?.data?._id
-  );
+  const bookingsDataSend = bookingsData?.data;
+
+  // console.log(bookingsData, 'booking data');
+
+  if (isLoading) return <p>Loading...</p>;
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -27,13 +31,13 @@ const UserDashboard = () => {
         {/* <UserInfo userData={userData.data} />
         {!bookingIsLoading && bookingData?.data?.length > 0 &&
           bookingData.data.map((booking) => <BookingInfo booking={booking} />)} */}
-        {bookingIsLoading ? (
+        {isLoading ? (
           <p>Loading bookings...</p>
         ) : (
           <>
-            {/* <UpcomingBookings bookingsData={bookingsData?.data} /> */}
-
-            {/* <UserBookingsDataTable bookingsData={bookingsData.data} /> */}
+            <div>
+              <UserBookingsDataTable bookingsData={bookingsDataSend} />
+            </div>
           </>
         )}
       </div>
