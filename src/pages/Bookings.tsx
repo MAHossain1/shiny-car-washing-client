@@ -55,9 +55,10 @@ const Bookings = () => {
     try {
       const res = await createBooking(data).unwrap();
       if (res.success) {
+        console.log('res', res, 'booking create done.');
         toast.success('Payment is processing.');
-
-        navigate('/payment-success');
+        window.location.href = res.data.payment_url;
+        // navigate('/payment-success');
       } else if (!res.success) {
         setError(res?.data.message);
       }

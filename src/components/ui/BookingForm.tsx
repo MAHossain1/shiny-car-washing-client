@@ -140,8 +140,11 @@ const BookingForm = ({ form, onSubmit }: TFormProps) => {
             </FormItem>
           )}
         />
-        <div className="mt-8">
-          <Button type="submit" className="w-full">
+        <div className="mt-8 text-green">
+          <Button
+            type="submit"
+            className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
+          >
             Continue to Payment
           </Button>
         </div>

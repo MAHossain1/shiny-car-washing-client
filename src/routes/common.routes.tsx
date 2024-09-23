@@ -1,3 +1,4 @@
+import Bookings from '../pages/Bookings';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import PaymentSuccess from '../pages/PaymentSuccess';
@@ -28,6 +29,11 @@ export const commonPaths = [
         name: 'Service Details',
         path: '/services/:id',
         element: <ServiceDetailsPage />,
+      },
+      {
+        name: 'Bookings',
+        path: '/bookings',
+        element: <Bookings />,
       },
 
       {
