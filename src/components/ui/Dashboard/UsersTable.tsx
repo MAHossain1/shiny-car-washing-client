@@ -29,14 +29,13 @@ import {
   TableHeader,
   TableRow,
 } from './table';
+import { toast } from 'sonner';
 
 const UsersTable = () => {
   const { data: usersData = [], isLoading } = useGetUsersQuery({});
-  console.log(usersData);
   const [updateUser] = useUpdateUserMutation();
 
   const updateUserRole = async (role: string, id: string) => {
-    console.log('role', role);
     const updatedUser = {
       id,
       data: {
@@ -47,7 +46,7 @@ const UsersTable = () => {
     try {
       const res = await updateUser(updatedUser);
       if (res?.data?.success) {
-        console.log('User role updated successfully');
+        toast.success('User role updated successfully');
       }
     } catch (err) {
       console.log(err);

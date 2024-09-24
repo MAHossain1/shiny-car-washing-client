@@ -27,7 +27,5 @@ export const getPastBookings = (bookingsData: any) => {
     return startTimeInMs < presentTimeInMs;
   });
 
-  console.log(pastBookings, 'from utils past');
-
   return pastBookings;
 };

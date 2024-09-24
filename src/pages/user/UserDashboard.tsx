@@ -9,8 +9,6 @@ const UserDashboard = () => {
 
   const bookingsDataSend = bookingsData?.data;
 
-  // console.log(bookingsData, 'booking data');
-
   if (isLoading) return <p>Loading...</p>;
 
   if (isLoading) return <p>Loading...</p>;
@@ -23,9 +21,6 @@ const UserDashboard = () => {
         </h1>
         <p className="text-sm text-gray-500">Welcome, {user?.name}</p>
 
-        {/* <UserInfo userData={userData.data} />
-        {!bookingIsLoading && bookingData?.data?.length > 0 &&
-          bookingData.data.map((booking) => <BookingInfo booking={booking} />)} */}
         {isLoading ? (
           <p>Loading bookings...</p>
         ) : (

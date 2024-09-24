@@ -28,12 +28,6 @@ const DashboardSidebar = () => {
     {
       title: 'Service Management',
       items: [
-        // {
-        //   icon: <CopyPlus />,
-        //   label: 'Add Service',
-        //   href: 'create-service',
-        //   visible: ['admin'],
-        // },
         {
           icon: <ClipboardList />,
           label: 'Service List',

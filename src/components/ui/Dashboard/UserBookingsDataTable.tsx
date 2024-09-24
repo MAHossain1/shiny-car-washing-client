@@ -15,7 +15,6 @@ import {
 } from './table';
 
 const UserBookingsDataTable = ({ bookingsData }: any) => {
-  console.log(bookingsData, 'booking table');
   return (
     <Card x-chunk="dashboard-06-chunk-0">
       <CardHeader>

@@ -4,7 +4,6 @@ import { Card, CardContent, CardFooter, CardHeader } from '../Card';
 
 const UserInfo = ({ userData }: any) => {
   const { name, email, phone, address } = userData;
-  console.log(userData);
 
   return (
     <Card className="max-w-[280px]">

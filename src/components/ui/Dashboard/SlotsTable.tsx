@@ -42,18 +42,14 @@ const SlotsTable = () => {
   const { data: slotData = [], isLoading } = useGetAllSlotsQuery([]);
 
   const handleUpdateSlotStatus = async (id: string) => {
-    console.log(id, 'slot id from update clicked');
-    console.log(status, 'seletecd status');
     if (status && id) {
       const slotUpdatedData = {
         id: id,
         data: { isBooked: status },
       };
       const res = await updateSlot(slotUpdatedData);
-      console.log('res', res);
       if (res?.data?.success) {
         toast.success('Slot status updated successfully');
-        console.log('Slot status updated successfully');
       }
     }
   };

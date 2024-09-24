@@ -3,6 +3,7 @@ import { createServiceValidationSchema } from '../../schemas/serviceSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import ServiceModal from './ServiceModal';
+import { toast } from 'sonner';
 
 const AddServiceModal = ({ setOpen }: any) => {
   const [addService] = useAddServiceMutation();
@@ -25,9 +26,7 @@ const AddServiceModal = ({ setOpen }: any) => {
     try {
       const res = await addService(data);
       if (res.data.success) {
-        //toast message
-        console.log('Service added successfully');
-        console.log(res);
+        toast.success('Service added successfully');
       }
 
       // Close modal after adding service

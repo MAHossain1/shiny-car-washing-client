@@ -24,7 +24,6 @@ const slotApi = baseApi.injectEndpoints({
     }),
     updateSlot: builder.mutation({
       query: ({ id, data }) => {
-        console.log('api2', data);
         return {
           url: `/slots/update-slot/${id}`,
           method: 'PUT',

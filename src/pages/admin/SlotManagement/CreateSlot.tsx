@@ -19,18 +19,15 @@ const CreateSlot = () => {
       const res = await createSlot(data).unwrap();
       if (res.success) {
         toast.success('Slot created successfully.');
-        console.log(res);
       } else {
-        console.log('Failed to create slot.');
         setError(res.message || 'Failed to create slot.');
       }
     } catch (error: any) {
       // Handle the error from the rejected promise
       if (error.data && !error.data.success) {
-        console.log(error.data.message); // Log the error message
         setError(error.data.message);
       } else {
-        console.error('Unexpected error:', error); // Log unexpected errors
+        console.error('Unexpected error:', error);
       }
     }
   };
