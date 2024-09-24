@@ -35,17 +35,17 @@ const UsersTable = () => {
   const { data: usersData = [], isLoading } = useGetUsersQuery({});
   const [updateUser] = useUpdateUserMutation();
 
-  const updateUserRole = async (role: string, id: string) => {
-    const updatedUser = {
-      id,
+  const updateUserRole = async (email: string, role: string) => {
+    const updatedUserData = {
+      email,
       data: {
         role,
       },
     };
 
     try {
-      const res = await updateUser(updatedUser);
-      if (res?.data?.success) {
+      const res = await updateUser(updatedUserData).unwrap();
+      if (res?.success) {
         toast.success('User role updated successfully');
       }
     } catch (err) {
@@ -73,7 +73,7 @@ const UsersTable = () => {
           </TableHeader>
           <TableBody>
             {usersData?.data?.map((user: any) => {
-              const { _id, name, email, address, phone, role } = user;
+              const { name, email, address, phone, role } = user;
               return (
                 <TableRow>
                   <TableCell className="sm:table-cell">{name}</TableCell>
@@ -104,8 +104,8 @@ const UsersTable = () => {
                             <AlertDialogAction
                               onClick={() =>
                                 updateUserRole(
-                                  role === 'user' ? 'admin' : 'user',
-                                  _id
+                                  email,
+                                  role === 'user' ? 'admin' : 'user'
                                 )
                               }
                             >
