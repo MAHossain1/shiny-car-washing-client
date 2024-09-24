@@ -7,7 +7,9 @@ const Profile = () => {
 
   const email = user?.email;
 
-  const { data: userData = {}, isLoading } = useGetSingleUserQuery(email!);
+  const { data: userData = {}, isLoading } = useGetSingleUserQuery(email!, {
+    refetchOnMountOrArgChange: true, // Automatically fetch fresh data when component mounts
+  });
 
   if (isLoading) return <div>Loading...</div>;
   if (!userData) return <div>User not found.</div>;

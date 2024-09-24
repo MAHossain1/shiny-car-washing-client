@@ -13,11 +13,12 @@ const userApi = baseApi.injectEndpoints({
       query: (email: string) => ({
         url: `/users/${email}`,
       }),
+      providesTags: ['users'],
     }),
 
     updateUser: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/users/${id}`,
+      query: ({ email, data }) => ({
+        url: `/users/${email}`,
         method: 'PUT',
         body: data,
       }),

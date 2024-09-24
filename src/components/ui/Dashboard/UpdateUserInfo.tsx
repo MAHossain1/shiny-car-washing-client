@@ -2,6 +2,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { TUser } from '../../../redux/features/auth/authSlice';
 import { useUpdateUserMutation } from '../../../redux/features/users/userApi';
 import UserForm from '../DashboardForms/UserForm';
+import { toast } from 'sonner';
 
 const UpdateUserInfo = ({ data }: { data: TUser }) => {
   const [updateUser] = useUpdateUserMutation();
@@ -17,15 +18,16 @@ const UpdateUserInfo = ({ data }: { data: TUser }) => {
 
   const onSubmit = async (data: FieldValues) => {
     const updatedUserData = {
-      id: data._id,
+      email: data.email,
       data: data,
     };
+
     const res = await updateUser(updatedUserData).unwrap();
-    // console.log('data', res);
+
     if (res.success) {
-      console.log('User updated successfully');
+      toast.success('User updated successfully');
     } else {
-      console.error('Failed to update user');
+      toast.error('Failed to update user');
     }
   };
 

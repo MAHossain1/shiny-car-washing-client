@@ -22,7 +22,6 @@ const ReviewSection = () => {
   };
 
   const handleSubmit = async () => {
-    console.log('clicked');
     if (feedback && rating && user) {
       const reviewData = {
         reviewText: feedback,

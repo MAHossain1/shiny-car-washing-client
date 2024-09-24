@@ -1,15 +1,10 @@
-import { useState } from 'react';
-
-import { PlusCircle } from 'lucide-react';
-import { Card, CardContent, CardFooter, CardHeader } from '../Card';
-import { Dialog, DialogTrigger } from './dialog';
+import { Link } from 'react-router-dom';
 import { Button } from '../button';
-import UpdateUserInfo from './UpdateUserInfo';
+import { Card, CardContent, CardFooter, CardHeader } from '../Card';
 
 const UserInfo = ({ userData }: any) => {
-  const [open, setOpen] = useState(false);
-
   const { name, email, phone, address } = userData;
+  console.log(userData);
 
   return (
     <Card className="max-w-[280px]">
@@ -21,17 +16,11 @@ const UserInfo = ({ userData }: any) => {
         <p>Address: {address}</p>
       </CardContent>
       <CardFooter>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button size="sm" className="h-8 gap-1">
-              <PlusCircle className="h-3.5 w-3.5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Update
-              </span>
-            </Button>
-          </DialogTrigger>
-          <UpdateUserInfo data={userData} />
-        </Dialog>
+        <Button size="sm" className="h-8 gap-1" asChild>
+          <Link to="/user/me" state={userData._id}>
+            Update
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );
